@@ -1,181 +1,162 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Blossom Boutique</title>
-  <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      margin: 0;
-      background-image: url('https://example.com/flowers-bg.jpg');
-      background-size: cover;
-      background-repeat: no-repeat;
-      background-attachment: fixed;
-    }
-    header {
-      background: rgba(255, 255, 255, 0.9);
-      padding: 1rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    nav a {
-      margin: 0 1rem;
-      text-decoration: none;
-      color: #5a2a83;
-      font-weight: bold;
-    }
-    .hero {
-      text-align: center;
-      padding: 4rem 1rem;
-      color: white;
-      background: rgba(0, 0, 0, 0.4);
-    }
-    .filters {
-      padding: 1rem;
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-    }
-    .products {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1.5rem;
-      padding: 2rem;
-    }
-    .product-card {
-      background: white;
-      border-radius: 8px;
-      overflow: hidden;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-      padding: 1rem;
-    }
-    .product-card img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-    }
-    footer {
-      background: #5a2a83;
-      color: white;
-      text-align: center;
-      padding: 1rem;
-    }
-    input, select {
-      padding: 0.5rem;
-      border-radius: 5px;
-      border: 1px solid #ccc;
-    }
-    button {
-      padding: 0.5rem 1rem;
-      background: #a65fbf;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flower Made Products - Shop</title>
+    <style>
+        /* CSS Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f4f4f4;
+        }
+
+        .header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .nav {
+            background-color: #34495e;
+            padding: 1rem;
+        }
+
+        .nav a {
+            color: white;
+            text-decoration: none;
+            margin-right: 2rem;
+            font-weight: bold;
+        }
+
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .product-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 1rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+
+        .product-info {
+            margin-top: 1rem;
+        }
+
+        .price {
+            color: #e74c3c;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        .add-to-cart button {
+            background-color: #3498db;
+            color: white;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 1rem;
+        }
+
+        .search-filter {
+            margin-top: 2rem;
+            display: flex;
+            gap: 1rem;
+        }
+
+        .sorting-select {
+            padding: 0.5rem;
+            border-radius: 4px;
+        }
+
+        .footer {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            margin-top: 2rem;
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <h1>Blossom Boutique</h1>
-    <nav>
-      <a href="#">Home</a>
-      <a href="#products">Products</a>
-      <a href="#about">About</a>
-      <a href="#contact">Contact</a>
+    <header class="header">
+        <h1>Flower Made Products</h1>
+        <p>Natural and Organic Beauty Products</p>
+    </header>
+
+    <nav class="nav">
+        <a href="#home">Home</a>
+        <a href="#shop">Shop</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
     </nav>
-  </header>
 
-  <section class="hero">
-    <h2>Welcome to Blossom Boutique</h2>
-    <p>Handcrafted products made from real flowers</p>
-    <button onclick="scrollToProducts()">Shop Now</button>
-  </section>
+    <main class="main-content">
+        <section class="search-filter">
+            <label for="search">Search:</label>
+            <input type="text" id="search" name="search" placeholder="Enter product name...">
+            
+            <div class="sorting-select">
+                <select id="sorting" name="sorting">
+                    <option value="">Sort by</option>
+                    <option value="price-asc">Price (Low to High)</option>
+                    <option value="price-desc">Price (High to Low)</option>
+                </select>
+            </div>
+        </section>
 
-  <section class="filters">
-    <input type="text" id="search" placeholder="Search products..." oninput="filterProducts()">
-    <select id="sort" onchange="sortProducts()">
-      <option value="default">Sort by</option>
-      <option value="name">Name</option>
-      <option value="price">Price</option>
-    </select>
-  </section>
+        <section class="product-grid">
+            <!-- Product Cards -->
+            <article class="product-card">
+                <img src="https://via.placeholder.com/300x200" alt="Organic Soap" class="product-image">
+                <div class="product-info">
+                    <h2>Organic Soap</h2>
+                    <p>Natural Hand Soap made from pure plant-based ingredients.</p>
+                    <div class="price">$12.99</div>
+                    <button onclick="addToCart()">Add to Cart</button>
+                </div>
+            </article>
 
-  <section id="products" class="products">
-    <div class="product-card" data-name="Rose Soap" data-price="10">
-      <img src="https://example.com/rose-soap.jpg" alt="Rose Soap">
-      <h3>Rose Soap</h3>
-      <p>$10</p>
-    </div>
-    <div class="product-card" data-name="Lavender Candle" data-price="15">
-      <img src="https://example.com/lavender-candle.jpg" alt="Lavender Candle">
-      <h3>Lavender Candle</h3>
-      <p>$15</p>
-    </div>
-    <div class="product-card" data-name="Chamomile Bath Bomb" data-price="12">
-      <img src="https://example.com/chamomile-bath.jpg" alt="Chamomile Bath Bomb">
-      <h3>Chamomile Bath Bomb</h3>
-      <p>$12</p>
-    </div>
-  </section>
+            <!-- More product cards here -->
+        </section>
+    </main>
 
-  <section id="about" style="padding: 2rem; background: rgba(255,255,255,0.9);">
-    <h2>About Us</h2>
-    <p>We craft beautiful, natural products using locally sourced flowers. Each product is made with love and care for you and the environment.</p>
-    <video width="100%" controls>
-      <source src="https://example.com/about-video.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
-  </section>
+    <footer class="footer">
+        <p>&copy; 2023 Flower Made Products. All rights reserved.</p>
+    </footer>
 
-  <section id="contact" style="padding: 2rem; background: rgba(255,255,255,0.95);">
-    <h2>Contact Us</h2>
-    <form>
-      <input type="text" placeholder="Your Name" required><br><br>
-      <input type="email" placeholder="Your Email" required><br><br>
-      <textarea placeholder="Your Message" rows="5" required></textarea><br><br>
-      <button type="submit">Send Message</button>
-    </form>
-  </section>
-
-  <footer>
-    <p>&copy; 2025 Blossom Boutique. All rights reserved.</p>
-  </footer>
-
-  <script>
-    function scrollToProducts() {
-      document.getElementById('products').scrollIntoView({ behavior: 'smooth' });
-    }
-
-    function filterProducts() {
-      const query = document.getElementById('search').value.toLowerCase();
-      const cards = document.querySelectorAll('.product-card');
-      cards.forEach(card => {
-        const name = card.dataset.name.toLowerCase();
-        card.style.display = name.includes(query) ? '' : 'none';
-      });
-    }
-
-    function sortProducts() {
-      const criteria = document.getElementById('sort').value;
-      const container = document.querySelector('.products');
-      const cards = Array.from(container.children);
-      let sorted;
-
-      if (criteria === 'name') {
-        sorted = cards.sort((a, b) => a.dataset.name.localeCompare(b.dataset.name));
-      } else if (criteria === 'price') {
-        sorted = cards.sort((a, b) => a.dataset.price - b.dataset.price);
-      } else {
-        return;
-      }
-
-      container.innerHTML = '';
-      sorted.forEach(card => container.appendChild(card));
-    }
-  </script>
+    <!-- JavaScript for functionality -->
+    <script>
+        function addToCart() {
+            alert('Added to cart!');
+        }
+    </script>
 </body>
 </html>
-
